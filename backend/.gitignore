@@ -77,4 +77,6 @@ Homestead.yaml
 /public/build
 
 /vendor
+backend/vendor
+frontend/.idea
 
