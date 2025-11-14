@@ -1,24 +1,80 @@
+# System
 *.log
 .DS_Store
+Thumbs.db
+
+# Environment
 .env
-.env.backup
+.env.*.backup
 .env.production
-.phpactor.json
-.phpunit.result.cache
-/.fleet
-/.idea
-/.nova
-/.phpunit.cache
-/.vscode
-/.zed
+.env.local
+
+# PHP / Composer
+/vendor/
+/vendor/*
+/composer.phar
 /auth.json
-/node_modules
-/public/build
-/public/hot
+
+# Laravel specific
 /public/storage
 /storage/*.key
 /storage/pail
-/vendor
+/storage/debugbar
+/storage/framework/cache/data
+/storage/framework/sessions
+/storage/framework/views
+/storage/logs/*.log
+
+# Node / frontend
+/node_modules/
+/frontend/node_modules/
+npm-debug.log*
+yarn-error.log
+.pnpm-debug.log
+/dist/
+/build/
+/public/build/
+/public/hot
+
+# Angular specific
+/.angular/
+/.angular/cache
+
+# Certificates (local dev)
+backend/certs/
+frontend/certs/
+certs/
+*.pem
+*.key
+
+# IDEs
+/.idea/
+/.vscode/
+/_ide_helper.php
+/.phpactor.json
+/.fleet
+/.zed
+/.nova
+
+# PHPUnit / test caches
+.phpunit.result.cache
+/.phpunit.cache
+
+# OS
+ehthumbs.db
+
+# Misc
 Homestead.json
 Homestead.yaml
-Thumbs.db
+
+.phpactor.json
+
+/.idea
+
+/.vscode
+
+/node_modules
+/public/build
+
+/vendor
+
