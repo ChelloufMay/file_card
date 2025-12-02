@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\ReviewFactory;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,7 +21,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @mixin Model
  * @property-read Card|null $card
  * @property-read User|null $user
- * @method static \Database\Factories\ReviewFactory factory($count = null, $state = [])
+ * @method static ReviewFactory factory($count = null, $state = [])
  * @method static Builder<static>|Review newModelQuery()
  * @method static Builder<static>|Review newQuery()
  * @method static Builder<static>|Review query()
