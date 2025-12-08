@@ -17,6 +17,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\NewAccessToken;
 use Laravel\Sanctum\PersonalAccessToken;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 /**
  * @property int $id
  * @property string $name
@@ -47,7 +49,8 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @method PersonalAccessToken|null currentAccessToken()
  * @mixin Model
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
+
 {
     /** @use HasFactory<UserFactory> */
     use HasApiTokens, HasFactory, Notifiable;
@@ -61,6 +64,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'phone_carrier',
     ];
 
     /**
@@ -78,11 +83,16 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'phone_verified_at' => 'datetime',
+    ];
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'phone_verified_at' => 'datetime',
         ];
     }
 }

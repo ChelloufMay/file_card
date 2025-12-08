@@ -42,8 +42,9 @@ class Card extends Model
 {
     use HasFactory;
 
+    public mixed $fingerprint;
     protected $fillable = [
-        'deck_id','question','answer','tags',
+        'deck_id','question','answer','tags','fingerprint',
         'box_level','repetitions','easiness_factor',
         'interval_days','next_review_at','last_reviewed_at'
     ];
@@ -63,4 +64,41 @@ class Card extends Model
     {
         return $this->hasMany(Review::class);
     }
+    // ---- MODIFICATION START: makeFingerprint helper (used for duplicate prevention) ----
+    /**
+     * Compute a stable fingerprint for duplication detection.
+     * Normalizes question, answer and tags (sorted) before hashing.
+     *
+     * @param string $question
+     * @param string $answer
+     * @param array|string|null $tags
+     * @return string
+     */
+    public static function makeFingerprint(string $question, string $answer, array|string $tags = null): string
+    {
+        $normalize = function ($s) {
+            $s = mb_strtolower(trim((string)$s));
+            $s = preg_replace('/[^\p{L}\p{N}\s]/u', '', $s);
+            return preg_replace('/\s+/', ' ', $s);
+        };
+
+        $q = $normalize($question);
+        $a = $normalize($answer);
+
+        $t = '';
+        if ($tags) {
+            if (!is_array($tags)) {
+                $decoded = json_decode($tags, true);
+                $tagsArr = is_array($decoded) ? $decoded : (is_string($tags) ? [$tags] : []);
+            } else {
+                $tagsArr = $tags;
+            }
+            $tagsArr = array_map(fn($s) => $normalize($s), $tagsArr);
+            sort($tagsArr);
+            $t = implode('|', $tagsArr);
+        }
+
+        return hash('sha256', $q . '||' . $a . '||' . $t);
+    }
+    // ---- MODIFICATION END ----
 }

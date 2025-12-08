@@ -12,8 +12,11 @@ class ReviewStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'result' => 'required|in:easy,ok,hard',
-            'comment' => 'nullable|string',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|confirmed|min:6',
+            'phone' => 'nullable|string|max:32',
+            'phone_carrier' => 'nullable|string|max:128',
         ];
     }
 }

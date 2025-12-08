@@ -36,13 +36,11 @@ class SRSService
         $card->repetitions = ($card->repetitions ?? 0) + 1;
         $card->save();
 
-        $review = Review::create([
+        return Review::create([
             'card_id' => $card->id,
             'user_id' => $user->id,
             'result' => $result,
             'comment' => $comment,
         ]);
-
-        return $review;
     }
 }

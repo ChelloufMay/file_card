@@ -1,59 +1,41 @@
-# Frontend
+# File Card Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.8.
+Modern, responsive React frontend for the File Card application.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- 🔐 Authentication (Login, Register, Email Verification)
+- 🔑 Password Reset (Forgot Password, Reset Password)
+- 📱 Fully Responsive Design
+- ✨ Smooth Animations
+- ✅ Real-time Form Validation
+- 🎨 Modern UI with Tailwind CSS
 
+## Setup
+
+1. Install dependencies:
 ```bash
-ng serve
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+2. Start development server:
 ```bash
-ng generate component component-name
+npm run dev
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The app will be available at `http://localhost:3000`
+
+## Build
 
 ```bash
-ng generate --help
+npm run build
 ```
 
-## Building
+## Tech Stack
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- Axios
